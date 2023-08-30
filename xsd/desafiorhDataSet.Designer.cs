@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace Desafio_Concilig {
+namespace Desafio_Concilig.xsd {
     
     
     /// <summary>
@@ -2515,7 +2515,7 @@ namespace Desafio_Concilig {
         }
     }
 }
-namespace Desafio_Concilig.desafiorhDataSetTableAdapters {
+namespace Desafio_Concilig.xsd.desafiorhDataSetTableAdapters {
     
     
     /// <summary>

@@ -19,11 +19,12 @@ namespace Desafio_Concilig
             finally
             {
                 load_tables uc = new load_tables();
-                addControll(uc);
+                addControl(uc);
             }            
         }
 
-        public void addControll(UserControl userControl)
+        // CARREGA O USER CONTROL DESEJADO DENTRO DO MAIN
+        public void addControl(UserControl userControl)
         {
             userControl.Dock = DockStyle.Fill;
             pl_inside.Controls.Clear();
@@ -31,7 +32,7 @@ namespace Desafio_Concilig
             userControl.BringToFront();
         }
 
-        // BOTÕES JANELA
+        // BOTÕES MENU TOPO JANELA
         private void bt_minimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -65,9 +66,10 @@ namespace Desafio_Concilig
             }
         }
 
+        // CREDITOS
         private void txt_creator_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("https://github.com/andrecomegno");
 
-        //DROG FORM
+        //ARRASTAR FORMULARIO
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]

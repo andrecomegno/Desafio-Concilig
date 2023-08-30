@@ -104,15 +104,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="desafiorhDataSet.Designer.cs">
+    <Compile Include="xsd\desafiorhDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>desafiorhDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="load_tables.cs">
+    <Compile Include="Control\load_tables.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="load_tables.Designer.cs">
+    <Compile Include="Control\load_tables.Designer.cs">
       <DependentUpon>load_tables.cs</DependentUpon>
     </Compile>
     <Compile Include="Script\configdb.cs" />
@@ -139,7 +139,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="load_tables.resx">
+    <EmbeddedResource Include="Control\load_tables.resx">
       <DependentUpon>load_tables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Script\RJTextBox.resx">
@@ -160,15 +160,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="desafiorhDataSet.xsc">
+    <None Include="xsd\desafiorhDataSet.xsc">
       <DependentUpon>desafiorhDataSet.xsd</DependentUpon>
     </None>
-    <None Include="desafiorhDataSet.xsd">
+    <None Include="xsd\desafiorhDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>desafiorhDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="desafiorhDataSet.xss">
+    <None Include="xsd\desafiorhDataSet.xss">
       <DependentUpon>desafiorhDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -185,8 +185,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Control\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

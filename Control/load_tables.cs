@@ -75,6 +75,8 @@ namespace Desafio_Concilig
         {
             try
             {
+                // VERIFICAR SE JA EXISTE O CPF CADASTRADO ANTES DE SALVAR
+
                 /*
                 // BANCO DE DADOS
                 configdb database = new configdb();
@@ -106,23 +108,26 @@ namespace Desafio_Concilig
             }
             catch (Exception ex)
             {
-                // TRATAR EXCEÇÃO ESPECÍFICA RELACIONADA AO DBNull AQUI
                 MessageBox.Show("Invalid Cast Exception: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        // BOTÃO AUTO SALVA CSV
         void AutoSaveCSV(object sender, DataGridViewCellEventArgs e, int iduser)
         {
+            // IMPLEMENTACAO DO AUTOSAVE EM TESTE
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 DataGridView dataGridViews = (DataGridView)sender;
                 DataGridViewRow row = dataGridViews.Rows[e.RowIndex];
 
+                // CABEÇALHO DENTRO DO DATAGRIDVIEW  *** TEMPORARIO
                 client_name = row.Cells[0].Value == DBNull.Value ? "N/A" : row.Cells[0].Value.ToString();
                 client_cpf = row.Cells[1].Value == DBNull.Value ? "N/A" : row.Cells[1].Value.ToString();
                 contract_number = row.Cells[2].Value == DBNull.Value ? 0 : (int)row.Cells[2].Value;
                 name_products = row.Cells[3].Value == DBNull.Value ? "N/A" : row.Cells[3].Value.ToString();
                 expiration_date = row.Cells[4].Value == DBNull.Value ? DateTime.Now : (DateTime)row.Cells[1].Value;
+                client_name = row.Cells[0].Value == DBNull.Value ? "N/A" : row.Cells[0].Value.ToString();
 
                 // VALOR TOTAL DA COMPRA
                 string contractAmount = row.Cells[5].Value.ToString();
@@ -143,7 +148,7 @@ namespace Desafio_Concilig
         // BOTÃO CARREGAR CSV
         private void BT_LoadCSV()
         {
-
+            // SELECIONAR SOMENTE AQUIVOS CSV
             using (OpenFileDialog openFileDialog = new OpenFileDialog() { Filter = "CSV|*.csv", ValidateNames = true })
             {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
