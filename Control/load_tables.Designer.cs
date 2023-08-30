@@ -33,11 +33,11 @@ namespace Desafio_Concilig
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pl_datagridview = new System.Windows.Forms.Panel();
             this.bt_load = new System.Windows.Forms.Button();
             this.pl_top = new System.Windows.Forms.Panel();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,23 +50,9 @@ namespace Desafio_Concilig
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.pl_datagridview.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Controls.Add(this.bt_load);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 29);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1116, 579);
-            this.panel1.TabIndex = 1;
             // 
             // dataGridView1
             // 
@@ -120,9 +106,18 @@ namespace Desafio_Concilig
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
-            this.dataGridView1.Size = new System.Drawing.Size(1090, 441);
+            this.dataGridView1.Size = new System.Drawing.Size(1058, 441);
             this.dataGridView1.TabIndex = 126;
-            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
+            // 
+            // pl_datagridview
+            // 
+            this.pl_datagridview.Controls.Add(this.dataGridView1);
+            this.pl_datagridview.Controls.Add(this.bt_load);
+            this.pl_datagridview.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pl_datagridview.Location = new System.Drawing.Point(0, 29);
+            this.pl_datagridview.Name = "pl_datagridview";
+            this.pl_datagridview.Size = new System.Drawing.Size(1084, 579);
+            this.pl_datagridview.TabIndex = 3;
             // 
             // bt_load
             // 
@@ -133,7 +128,7 @@ namespace Desafio_Concilig
             this.bt_load.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bt_load.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_load.ForeColor = System.Drawing.Color.White;
-            this.bt_load.Location = new System.Drawing.Point(980, 500);
+            this.bt_load.Location = new System.Drawing.Point(948, 500);
             this.bt_load.Name = "bt_load";
             this.bt_load.Size = new System.Drawing.Size(122, 36);
             this.bt_load.TabIndex = 125;
@@ -146,8 +141,12 @@ namespace Desafio_Concilig
             this.pl_top.Dock = System.Windows.Forms.DockStyle.Top;
             this.pl_top.Location = new System.Drawing.Point(0, 0);
             this.pl_top.Name = "pl_top";
-            this.pl_top.Size = new System.Drawing.Size(1116, 29);
-            this.pl_top.TabIndex = 2;
+            this.pl_top.Size = new System.Drawing.Size(1084, 29);
+            this.pl_top.TabIndex = 4;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Column1
             // 
@@ -227,22 +226,22 @@ namespace Desafio_Concilig
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pl_datagridview);
             this.Controls.Add(this.pl_top);
             this.Name = "load_tables";
-            this.Size = new System.Drawing.Size(1116, 752);
-            this.panel1.ResumeLayout(false);
+            this.Size = new System.Drawing.Size(1084, 743);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.pl_datagridview.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel pl_datagridview;
         private System.Windows.Forms.Button bt_load;
         private System.Windows.Forms.Panel pl_top;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;

@@ -14,21 +14,14 @@ namespace Desafio_Concilig
     public partial class load_tables : UserControl
     {
         private int id_user = Login.Instance.id_user;
-        private int id_products;
-        private string username;
-        private string client_name;
-        private string client_cpf;
-        private string name_products;
-        private int contract_number;
-        private decimal contract_amount;
-        private DateTime expiration_date;
+        private string import_datetime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
 
         public load_tables()
-        {            
+        {
             InitializeComponent();
         }
 
-        void TableCSV(int id)
+        void TableCSV(DateLoad records)
         {
             // BANCO DE DADOS
             configdb database = new configdb();
@@ -42,107 +35,48 @@ namespace Desafio_Concilig
 
             // CLIENTE
             MySqlCommand cmdClient = new MySqlCommand(insertClient, database.getConnection());
-            cmdClient.Parameters.Add("@client_name", MySqlDbType.VarChar, 145).Value = client_name;
-            cmdClient.Parameters.Add("@client_cpf", MySqlDbType.VarChar, 11).Value = client_cpf;
+            cmdClient.Parameters.Add("@client_name", MySqlDbType.VarChar, 145).Value = records.CLIENT_NAME;
+            cmdClient.Parameters.Add("@client_cpf", MySqlDbType.VarChar, 14).Value = records.CLIENT_CPF;
             cmdClient.ExecuteNonQuery();
             long idUsername = cmdClient.LastInsertedId;
 
-            //  PRODUCT
+            //  PRODUTO
             MySqlCommand cmdProducts = new MySqlCommand(insertProduct, database.getConnection());
-            cmdProducts.Parameters.Add("@name_products", MySqlDbType.VarChar, 145).Value = name_products;
+            cmdProducts.Parameters.Add("@name_products", MySqlDbType.VarChar, 145).Value = records.NAME_PRODUCTS;
             cmdProducts.ExecuteNonQuery();
             long idProduct = cmdProducts.LastInsertedId;
 
-            // CONTRACTS
-            MySqlCommand cmContracts = new MySqlCommand(insertContracts, database.getConnection());
-            cmContracts.Parameters.Add("@contract_number", MySqlDbType.Int32).Value = contract_number;
-            cmContracts.Parameters.Add("@contract_amount", MySqlDbType.Decimal).Value = contract_amount;
-            cmContracts.Parameters.Add("@expiration_date", MySqlDbType.Date).Value = expiration_date;
-            cmContracts.Parameters.Add("@id_client", MySqlDbType.Int32).Value = idUsername;
-            cmContracts.Parameters.Add("@id_products", MySqlDbType.Int32).Value = idProduct;
-            cmContracts.ExecuteNonQuery();
+            // VALOR DECIMAL DE UMS STRING FORMATADA  "R$ {0:N2}"
+            string contractAmountString = records.CONTRACT_AMOUNT;
+            // VALOR PADRÃO
+            decimal NEW_CONTRACT_AMOUNT = 0;
 
+            // REMOVER SIMBOLO E ESPAÇO EM BRANCO
+            contractAmountString = contractAmountString.Replace("R$", "").Trim();
+
+            // Tentar converter a string formatada para decimal
+            if (decimal.TryParse(contractAmountString, NumberStyles.Currency, new CultureInfo("pt-BR"), out NEW_CONTRACT_AMOUNT))
+            {
+                // A conversão foi bem-sucedida, agora você pode usar 'contractAmount' em seu comando SQL
+                // CONTRACTS
+                MySqlCommand cmContracts = new MySqlCommand(insertContracts, database.getConnection());
+                cmContracts.Parameters.Add("@contract_number", MySqlDbType.Int32).Value = records.CONTRACT_NUMBER;
+                cmContracts.Parameters.Add("@contract_amount", MySqlDbType.Decimal).Value = NEW_CONTRACT_AMOUNT;
+                cmContracts.Parameters.Add("@expiration_date", MySqlDbType.Date).Value = records.EXPIRATION_DATE;
+                cmContracts.Parameters.Add("@id_client", MySqlDbType.Int32).Value = idUsername;
+                cmContracts.Parameters.Add("@id_products", MySqlDbType.Int32).Value = idProduct;
+                cmContracts.ExecuteNonQuery();
+            }
+
+            /*
             // IMPORTAR
             MySqlCommand cmImport = new MySqlCommand(insertImport, database.getConnection());
-            cmImport.Parameters.Add("@import_datetime", MySqlDbType.Date).Value = contract_number;
+            cmImport.Parameters.Add("@import_datetime", MySqlDbType.DateTime).Value = import_datetime;
             cmImport.Parameters.Add("@id_user", MySqlDbType.Int32).Value = id;
             cmImport.ExecuteNonQuery();
+            */
 
             database.closeConnection();
-        }
-
-        void BT_Save(int iduser)
-        {
-            try
-            {
-                // VERIFICAR SE JA EXISTE O CPF CADASTRADO ANTES DE SALVAR
-
-                /*
-                // BANCO DE DADOS
-                configdb database = new configdb();
-                database.openConnection();
-                
-                string checkIfExistsQuery = "SELECT COUNT(*) FROM desafiorh.contracts WHERE contract_number = @contract_number";
-                MySqlCommand cmdCheckIfExists = new MySqlCommand(checkIfExistsQuery, database.getConnection());
-                cmdCheckIfExists.Parameters.Add("@id_products", MySqlDbType.Int32).Value = contract_number;
-                int recordCount = Convert.ToInt32(cmdCheckIfExists.ExecuteScalar());
-
-                if (dataGridView1.Rows.Count > 1)
-                {
-                    if (recordCount > 0)
-                    {
-                        // TABELA UPDATE
-                        TableEditPayDay();
-                    }
-                    else
-                    {
-                        // TABELA INSERT
-                        TableCSV(iduser);
-                    }
-                }
-
-                database.closeConnection();
-                */
-
-                TableCSV(iduser);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Invalid Cast Exception: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // BOTÃO AUTO SALVA CSV
-        void AutoSaveCSV(object sender, DataGridViewCellEventArgs e, int iduser)
-        {
-            // IMPLEMENTACAO DO AUTOSAVE EM TESTE
-            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
-            {
-                DataGridView dataGridViews = (DataGridView)sender;
-                DataGridViewRow row = dataGridViews.Rows[e.RowIndex];
-
-                // CABEÇALHO DENTRO DO DATAGRIDVIEW  *** TEMPORARIO
-                client_name = row.Cells[0].Value == DBNull.Value ? "N/A" : row.Cells[0].Value.ToString();
-                client_cpf = row.Cells[1].Value == DBNull.Value ? "N/A" : row.Cells[1].Value.ToString();
-                contract_number = row.Cells[2].Value == DBNull.Value ? 0 : (int)row.Cells[2].Value;
-                name_products = row.Cells[3].Value == DBNull.Value ? "N/A" : row.Cells[3].Value.ToString();
-                expiration_date = row.Cells[4].Value == DBNull.Value ? DateTime.Now : (DateTime)row.Cells[1].Value;
-                client_name = row.Cells[0].Value == DBNull.Value ? "N/A" : row.Cells[0].Value.ToString();
-
-                // VALOR TOTAL DA COMPRA
-                string contractAmount = row.Cells[5].Value.ToString();
-                if (decimal.TryParse(contractAmount, out decimal totalamount))
-                {
-                    contract_amount = totalamount;
-                }
-                else
-                {
-                    contract_amount = 0;
-                }
-
-                // BOTÃO SALVAR
-                BT_Save(iduser);
-            }
         }
 
         // BOTÃO CARREGAR CSV
@@ -175,8 +109,8 @@ namespace Desafio_Concilig
 
                         while (csv.Read())
                         {
-                            var record = csv.GetRecord<DateLoad>();
-
+                            var record = csv.GetRecord<DateLoad>();                            
+                            
                             //CONVERTE O VALOR CONTRACT_AMOUNT PARA DECIMAL
                             if (decimal.TryParse(record.CONTRACT_AMOUNT, out decimal valor))
                             {
@@ -185,6 +119,8 @@ namespace Desafio_Concilig
                             }
 
                             records.Add(record);
+                            // SAVE AUTOMATICO
+                            TableCSV(record);
                         }
                     }
 
@@ -194,8 +130,6 @@ namespace Desafio_Concilig
             }
         }
 
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e) => AutoSaveCSV(sender, e, id_user);
         private void bt_load_Click(object sender, EventArgs e) => BT_LoadCSV();
-
     }
 }

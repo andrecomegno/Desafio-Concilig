@@ -104,16 +104,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="xsd\desafiorhDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>desafiorhDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Control\load_tables.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Control\load_tables.Designer.cs">
       <DependentUpon>load_tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="xsd\desafiorhDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>desafiorhDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Script\configdb.cs" />
     <Compile Include="Script\ConvertDateCSV.cs" />
