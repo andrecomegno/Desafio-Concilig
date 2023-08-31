@@ -24,52 +24,77 @@ namespace Desafio_Concilig
         // SELECIONAR UM USURIO NO COMBOBOX
         private string selectUser;
         // CHECKBOX
-        private bool ckeckDelayInDay = false;
+        private bool checkDelayInDay= false;
 
         public dashboard()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         #region TABLES
         void TableMain()
         {
+            if (checkDelayInDay)
+            {
+                TableDelayInDays();
+            }
+            else
+            {
+                TableDefault(); 
+            }
+
+            TableSettings();
+        }
+        
+        void TableDefault()
+        {
             // BANCO DE DADOS
             configdb database = new configdb();
             database.openConnection();
 
-            string queryStandard = "select cl.client_name, cl.client_cpf, con.contract_number, pro.name_products, con.expiration_date, con.contract_amount, u.id_user, cl.id_client, con.id_contracts, pro.id_products, im.id_import from desafiorh.contracts_has_import has join desafiorh.contracts con on has.id_contracts = con.id_contracts join desafiorh.products pro on has.id_products = pro.id_products join desafiorh.client cl on has.id_client = cl.id_client join desafiorh.import im on has.id_import = im.id_import join desafiorh.user u on has.id_user = u.id_user where (@selectUser is NULL OR u.id_user = @selectUser) and cl.client_name like @searchname ";
-            string queryCheck = "select cl.client_name, cl.client_cpf, con.contract_number, pro.name_products, con.expiration_date, SUM(con.contract_amount) AS contract_amount, MAX(DATEDIFF(CURDATE(), con.expiration_date)) AS Delay_In_Days, u.id_user, cl.id_client, con.id_contracts, pro.id_products, im.id_import from desafiorh.contracts_has_import has join desafiorh.contracts con on has.id_contracts = con.id_contracts join desafiorh.products pro on has.id_products = pro.id_products join desafiorh.client cl on has.id_client = cl.id_client join desafiorh.import im on has.id_import = im.id_import join desafiorh.user u on has.id_user = u.id_user GROUP BY cl.client_name "; 
+            // TABELA PADRÃO AO INICIAR 
+            string query = "select cl.client_name, cl.client_cpf, con.contract_number, pro.name_products, con.expiration_date, con.contract_amount, u.id_user, cl.id_client, con.id_contracts, pro.id_products, im.id_import from desafiorh.contracts_has_import has join desafiorh.contracts con on has.id_contracts = con.id_contracts join desafiorh.products pro on has.id_products = pro.id_products join desafiorh.client cl on has.id_client = cl.id_client join desafiorh.import im on has.id_import = im.id_import join desafiorh.user u on has.id_user = u.id_user where (@selectUser is NULL OR u.id_user = @selectUser) and cl.client_name like @searchname ";
 
-            if (ckeckDelayInDay)
+            MySqlCommand cmd = new MySqlCommand(query, database.getConnection());
+            // SELECIONA UM USUARIO NO COMBOBOX
+            cmd.Parameters.AddWithValue("@selectUser", selectUser);
+            // BUSCAR NOMES DENTRO DO DATAGRIDVIEW
+            cmd.Parameters.AddWithValue("@searchName", "%" + txt_search.Texts);
+
+            using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
             {
-                MySqlCommand cmd = new MySqlCommand(queryCheck, database.getConnection());
-
-                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
-                {
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dataGridView1.DataSource = dt;
-                }
-            }
-            else
-            {
-                MySqlCommand cmd = new MySqlCommand(queryStandard, database.getConnection());
-                // SELECIONA UM USUARIO NO COMBOBOX
-                cmd.Parameters.AddWithValue("@selectUser", selectUser);
-                // BUSCAR NOMES DENTRO DO DATAGRIDVIEW
-                cmd.Parameters.AddWithValue("@searchName", "%" + txt_search.Texts);
-
-                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
-                {
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dataGridView1.DataSource = dt;
-                }
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
             }
 
             database.closeConnection();
-        } 
+        }
+
+        void TableDelayInDays()
+        {
+            // BANCO DE DADOS
+            configdb database = new configdb();
+            database.openConnection();
+
+            // TABELA COM ATRASO EM DIAS
+            string query = "select cl.client_name, cl.client_cpf, con.contract_number, pro.name_products, con.expiration_date, SUM(con.contract_amount) AS contract_amount, MAX(DATEDIFF(CURDATE(), con.expiration_date)) AS delay_in_days, u.id_user, cl.id_client, con.id_contracts, pro.id_products, im.id_import from desafiorh.contracts_has_import has join desafiorh.contracts con on has.id_contracts = con.id_contracts join desafiorh.products pro on has.id_products = pro.id_products join desafiorh.client cl on has.id_client = cl.id_client join desafiorh.import im on has.id_import = im.id_import join desafiorh.user u on has.id_user = u.id_user GROUP BY cl.client_name ";
+
+            MySqlCommand cmd = new MySqlCommand(query, database.getConnection());
+            // SELECIONA UM USUARIO NO COMBOBOX
+            cmd.Parameters.AddWithValue("@selectUser", selectUser);
+            // BUSCAR NOMES DENTRO DO DATAGRIDVIEW
+            cmd.Parameters.AddWithValue("@searchName", "%" + txt_search.Texts);
+
+            using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+            {
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+            }
+
+            database.closeConnection();
+        }
 
         void TableLoadCSV(DateLoad records, int id)
         {
@@ -173,6 +198,44 @@ namespace Desafio_Concilig
             cb_search.SelectedIndex = 0;
         }
 
+        // CONFIGURAÇÕES DA TABELA NECESSARIA
+        void TableSettings()
+        {
+            // CRIADO LISTA PARA COLUNAS DESATIVADAS
+            List<string> columnsToHide = new List<string>
+            { "Column8", "Column9", "Column10", "Column11", "Column12"};
+
+            foreach (string columnName in columnsToHide)
+            {
+                if (dataGridView1.Columns.Contains(columnName))
+                {
+                    dataGridView1.Columns[columnName].Visible = false;
+                }
+            }
+
+            // CRIADO UM LIST PARA ARMAZENAR AS COLUNAS 
+            List<string> columnsToDisplay = new List<string>
+            { "Column1", "Column2", "Column3", "Column4", "Column5", "Column6"};
+
+            foreach (string columnName in columnsToDisplay)
+            {
+                if (dataGridView1.Columns.Contains(columnName))
+                {
+                    // CRIADO UM INT PARA ADD AO DISPLAY
+                    int index = columnsToDisplay.IndexOf(columnName);
+                    dataGridView1.Columns[columnName].DisplayIndex = index;
+                    dataGridView1.Columns[columnName].Visible = true;
+                }
+            }
+
+            // COLUNA 7 - TABELA ATRASO EM DIAS
+            if (dataGridView1.Columns.Contains("Column7"))
+            {
+                dataGridView1.Columns["Column7"].DisplayIndex = columnsToDisplay.Count;
+                dataGridView1.Columns["Column7"].Visible = checkDelayInDay; // CHECKBOX
+            }
+        }
+
         #endregion
 
         #region BUTTONS
@@ -184,7 +247,6 @@ namespace Desafio_Concilig
             {
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-
                     // GRAVA QUEM FEZ A IMPORTAÇÃO DO ARQUIVO CSV
                     TableUser(id_user);
 
@@ -218,17 +280,16 @@ namespace Desafio_Concilig
                                 // MOEDA BRASIL CONTRACT_AMOUNT
                                 record.CONTRACT_AMOUNT = string.Format(new CultureInfo("pt-BR"), "R$ {0:N2}", total);
                             }
-
                             records.Add(record);
                             // SAVE AUTOMATICO
-                            TableLoadCSV(record, id_user);
+                            TableLoadCSV(record, id_user);                            
                         }
                     }
-
                     // CARREGA CSV
                     dataGridView1.DataSource = records;
+ 
                 }
-            }            
+            }
         }
 
         void BT_Logout()
@@ -259,7 +320,7 @@ namespace Desafio_Concilig
         private void bt_settings_Click(object sender, EventArgs e) => BT_Setting();
         #endregion
 
-        #region Search
+        #region SEARCH
         private void cb_search_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -296,10 +357,17 @@ namespace Desafio_Concilig
         }
 
         private void check_delay_in_days_CheckedChanged(object sender, EventArgs e)
+        {            
+            CheckDelayInDay();
+        }
+
+        // CKECKBOX ATRASO EM DIAS
+        void CheckDelayInDay()
         {
-            // CKECKBOX TRUE OU FALSE
-            ckeckDelayInDay = !ckeckDelayInDay;
-            //ATUALIZA TABELA
+            // TRUE / FALSE
+            checkDelayInDay = !checkDelayInDay;
+
+            // ATUALIZA A TABELA
             TableMain();
         }
 

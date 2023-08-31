@@ -38,10 +38,15 @@ namespace Desafio_Concilig
             this.bt_minimize = new System.Windows.Forms.Button();
             this.bt_maximize = new System.Windows.Forms.Button();
             this.pl_left = new System.Windows.Forms.Panel();
+            this.bt_home = new FontAwesome.Sharp.IconButton();
+            this.bt_dashboard = new FontAwesome.Sharp.IconButton();
+            this.bt_setting = new FontAwesome.Sharp.IconButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.bt_menu_collapse = new FontAwesome.Sharp.IconButton();
             this.pl_footer.SuspendLayout();
             this.pl_top.SuspendLayout();
             this.pl_left.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pl_inside
@@ -73,7 +78,7 @@ namespace Desafio_Concilig
             this.build.Name = "build";
             this.build.Size = new System.Drawing.Size(31, 13);
             this.build.TabIndex = 1;
-            this.build.Text = "v 1.0";
+            this.build.Text = "v 1.1";
             // 
             // txt_creator
             // 
@@ -162,12 +167,94 @@ namespace Desafio_Concilig
             // pl_left
             // 
             this.pl_left.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(33)))), ((int)(((byte)(35)))));
-            this.pl_left.Controls.Add(this.bt_menu_collapse);
+            this.pl_left.Controls.Add(this.bt_home);
+            this.pl_left.Controls.Add(this.bt_dashboard);
+            this.pl_left.Controls.Add(this.bt_setting);
+            this.pl_left.Controls.Add(this.panel1);
             this.pl_left.Dock = System.Windows.Forms.DockStyle.Left;
             this.pl_left.Location = new System.Drawing.Point(0, 33);
             this.pl_left.Name = "pl_left";
             this.pl_left.Size = new System.Drawing.Size(200, 974);
             this.pl_left.TabIndex = 0;
+            // 
+            // bt_home
+            // 
+            this.bt_home.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(74)))), ((int)(((byte)(111)))));
+            this.bt_home.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt_home.FlatAppearance.BorderSize = 0;
+            this.bt_home.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bt_home.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_home.ForeColor = System.Drawing.Color.White;
+            this.bt_home.IconChar = FontAwesome.Sharp.IconChar.House;
+            this.bt_home.IconColor = System.Drawing.Color.White;
+            this.bt_home.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.bt_home.IconSize = 35;
+            this.bt_home.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_home.Location = new System.Drawing.Point(0, 93);
+            this.bt_home.Name = "bt_home";
+            this.bt_home.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.bt_home.Size = new System.Drawing.Size(194, 46);
+            this.bt_home.TabIndex = 66;
+            this.bt_home.Tag = "Home";
+            this.bt_home.Text = "Home";
+            this.bt_home.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_home.UseVisualStyleBackColor = false;
+            // 
+            // bt_dashboard
+            // 
+            this.bt_dashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(134)))), ((int)(((byte)(200)))));
+            this.bt_dashboard.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt_dashboard.FlatAppearance.BorderSize = 0;
+            this.bt_dashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bt_dashboard.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_dashboard.ForeColor = System.Drawing.Color.White;
+            this.bt_dashboard.IconChar = FontAwesome.Sharp.IconChar.BarChart;
+            this.bt_dashboard.IconColor = System.Drawing.Color.White;
+            this.bt_dashboard.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.bt_dashboard.IconSize = 35;
+            this.bt_dashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_dashboard.Location = new System.Drawing.Point(0, 145);
+            this.bt_dashboard.Name = "bt_dashboard";
+            this.bt_dashboard.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.bt_dashboard.Size = new System.Drawing.Size(194, 46);
+            this.bt_dashboard.TabIndex = 65;
+            this.bt_dashboard.Tag = "Dashboard";
+            this.bt_dashboard.Text = "Dashboard";
+            this.bt_dashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_dashboard.UseVisualStyleBackColor = false;
+            this.bt_dashboard.Click += new System.EventHandler(this.bt_dashboard_Click);
+            // 
+            // bt_setting
+            // 
+            this.bt_setting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(74)))), ((int)(((byte)(111)))));
+            this.bt_setting.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt_setting.FlatAppearance.BorderSize = 0;
+            this.bt_setting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bt_setting.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_setting.ForeColor = System.Drawing.Color.White;
+            this.bt_setting.IconChar = FontAwesome.Sharp.IconChar.Gear;
+            this.bt_setting.IconColor = System.Drawing.Color.White;
+            this.bt_setting.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.bt_setting.IconSize = 35;
+            this.bt_setting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_setting.Location = new System.Drawing.Point(0, 197);
+            this.bt_setting.Name = "bt_setting";
+            this.bt_setting.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.bt_setting.Size = new System.Drawing.Size(194, 46);
+            this.bt_setting.TabIndex = 64;
+            this.bt_setting.Tag = "Settings";
+            this.bt_setting.Text = "Settings";
+            this.bt_setting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_setting.UseVisualStyleBackColor = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.bt_menu_collapse);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 928);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 46);
+            this.panel1.TabIndex = 63;
             // 
             // bt_menu_collapse
             // 
@@ -186,7 +273,7 @@ namespace Desafio_Concilig
             this.bt_menu_collapse.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.bt_menu_collapse.IconSize = 35;
             this.bt_menu_collapse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_menu_collapse.Location = new System.Drawing.Point(12, 932);
+            this.bt_menu_collapse.Location = new System.Drawing.Point(3, 6);
             this.bt_menu_collapse.Name = "bt_menu_collapse";
             this.bt_menu_collapse.Size = new System.Drawing.Size(40, 36);
             this.bt_menu_collapse.TabIndex = 62;
@@ -212,6 +299,7 @@ namespace Desafio_Concilig
             this.pl_footer.PerformLayout();
             this.pl_top.ResumeLayout(false);
             this.pl_left.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -227,6 +315,10 @@ namespace Desafio_Concilig
         private System.Windows.Forms.Button bt_maximize;
         private System.Windows.Forms.Panel pl_left;
         private FontAwesome.Sharp.IconButton bt_menu_collapse;
+        private System.Windows.Forms.Panel panel1;
+        private FontAwesome.Sharp.IconButton bt_dashboard;
+        private FontAwesome.Sharp.IconButton bt_setting;
+        private FontAwesome.Sharp.IconButton bt_home;
     }
 }
 

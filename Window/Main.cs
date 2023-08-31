@@ -9,7 +9,6 @@ namespace Desafio_Concilig
 {
     public partial class main : Form
     {
-
         // MENU RECOLHER
         bool _menuCollapse;
 
@@ -24,9 +23,8 @@ namespace Desafio_Concilig
             }
             finally
             {
-                dashboard uc = new dashboard();
-                addControl(uc);
-            }            
+                BT_Dashboard();
+            }
         }
 
         // CARREGA O USER CONTROL DESEJADO DENTRO DO MAIN
@@ -38,7 +36,7 @@ namespace Desafio_Concilig
             userControl.BringToFront();
         }
 
-        #region BUTTON TOP
+        #region BUTTONS
         // BOTÕES MENU TOPO JANELA
         private void bt_minimize_Click(object sender, EventArgs e)
         {
@@ -50,10 +48,12 @@ namespace Desafio_Concilig
             if (WindowState == FormWindowState.Normal)
             {
                 WindowState = FormWindowState.Maximized;
+                MenuCollapse(_menuCollapse);
             }
             else
             {
                 WindowState = FormWindowState.Normal;
+                MenuCollapse(!_menuCollapse);
             }
         }
 
@@ -72,6 +72,14 @@ namespace Desafio_Concilig
                     break;
             }
         }
+        // MENU LATERAL BUTTON
+        public void BT_Dashboard()
+        {
+            dashboard uc = new dashboard();
+            addControl(uc);
+        }
+
+        private void bt_dashboard_Click(object sender, EventArgs e) => BT_Dashboard();
         #endregion
 
         #region MENU LATERAL
@@ -107,6 +115,8 @@ namespace Desafio_Concilig
 
         private void bt_menu_collapse_Click(object sender, EventArgs e) => Menu_Collapse();
         private void Menu_Collapse() => MenuCollapse(_menuCollapse = !_menuCollapse);
+
+
         #endregion
 
         //ARRASTAR FORMULARIO
@@ -122,6 +132,7 @@ namespace Desafio_Concilig
 
         // CREDITOS
         private void txt_creator_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("https://github.com/andrecomegno");
+
 
     }
 }

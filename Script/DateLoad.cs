@@ -10,6 +10,6 @@ namespace Desafio_Concilig.Script
         public int CONTRACT_NUMBER { get; set; }
         public string NAME_PRODUCTS { get; set; }
         public DateTime EXPIRATION_DATE { get; set; }
-        public string CONTRACT_AMOUNT { get; set; }     
+        public string CONTRACT_AMOUNT { get; set; }
     }
 }

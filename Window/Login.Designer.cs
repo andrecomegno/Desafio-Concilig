@@ -44,7 +44,7 @@ namespace Desafio_Concilig
             // 
             // bt_enter
             // 
-            this.bt_enter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(74)))), ((int)(((byte)(111)))));
+            this.bt_enter.BackColor = System.Drawing.Color.SeaGreen;
             this.bt_enter.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bt_enter.FlatAppearance.BorderSize = 0;
             this.bt_enter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -110,7 +110,7 @@ namespace Desafio_Concilig
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(25)))), ((int)(((byte)(28)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.panel2.Controls.Add(this.build);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 367);
@@ -126,7 +126,7 @@ namespace Desafio_Concilig
             this.build.Name = "build";
             this.build.Size = new System.Drawing.Size(31, 13);
             this.build.TabIndex = 1;
-            this.build.Text = "v 1.0";
+            this.build.Text = "v 1.1";
             // 
             // lb_login
             // 
@@ -185,11 +185,11 @@ namespace Desafio_Concilig
             this.txt_password.UnderlinedStyle = false;
             this.txt_password.Leave += new System.EventHandler(this.txt_password_Leave);
             // 
-            // login
+            // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(44)))), ((int)(((byte)(60)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.ClientSize = new System.Drawing.Size(300, 397);
             this.Controls.Add(this.txt_password);
             this.Controls.Add(this.txt_username);
@@ -198,7 +198,7 @@ namespace Desafio_Concilig
             this.Controls.Add(this.pl_menu);
             this.Controls.Add(this.bt_enter);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "login";
+            this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "login";
             this.pl_menu.ResumeLayout(false);

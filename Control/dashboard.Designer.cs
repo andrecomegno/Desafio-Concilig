@@ -29,10 +29,10 @@ namespace Desafio_Concilig
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.bt_load = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -42,28 +42,28 @@ namespace Desafio_Concilig
             this.pl_dashboard = new System.Windows.Forms.Panel();
             this.pl_search = new System.Windows.Forms.Panel();
             this.lb_search = new System.Windows.Forms.Label();
+            this.txt_search = new Desafio_Concilig.Script.RJTextBox();
+            this.cb_search = new Desafio_Concilig.Script.RJComboBox();
             this.pl_datagradview = new System.Windows.Forms.Panel();
             this.check_delay_in_days = new System.Windows.Forms.CheckBox();
             this.pl_profile = new System.Windows.Forms.Panel();
+            this.bt_settings = new FontAwesome.Sharp.IconButton();
+            this.im_profile = new Desafio_Concilig.Script.RJCircularPictureBox();
             this.bt_logout = new FontAwesome.Sharp.IconButton();
             this.lb_welcome = new System.Windows.Forms.Label();
             this.lb_username = new System.Windows.Forms.Label();
-            this.bt_settings = new FontAwesome.Sharp.IconButton();
-            this.txt_search = new Desafio_Concilig.Script.RJTextBox();
-            this.cb_search = new Desafio_Concilig.Script.RJComboBox();
-            this.im_profile = new Desafio_Concilig.Script.RJCircularPictureBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pl_top.SuspendLayout();
             this.pl_inside.SuspendLayout();
@@ -84,14 +84,14 @@ namespace Desafio_Concilig
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(153)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(229)))), ((int)(((byte)(153)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.ColumnHeadersHeight = 50;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -101,27 +101,27 @@ namespace Desafio_Concilig
             this.Column4,
             this.Column5,
             this.Column6,
-            this.Column12,
             this.Column7,
             this.Column8,
             this.Column9,
             this.Column10,
-            this.Column11});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column11,
+            this.Column12});
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.Location = new System.Drawing.Point(28, 57);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.ShowCellToolTips = false;
@@ -221,121 +221,6 @@ namespace Desafio_Concilig
             this.lb_search.Text = "Search";
             this.lb_search.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pl_datagradview
-            // 
-            this.pl_datagradview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pl_datagradview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.pl_datagradview.Controls.Add(this.check_delay_in_days);
-            this.pl_datagradview.Controls.Add(this.bt_load);
-            this.pl_datagradview.Controls.Add(this.dataGridView1);
-            this.pl_datagradview.Location = new System.Drawing.Point(18, 221);
-            this.pl_datagradview.Name = "pl_datagradview";
-            this.pl_datagradview.Size = new System.Drawing.Size(1148, 554);
-            this.pl_datagradview.TabIndex = 2;
-            // 
-            // check_delay_in_days
-            // 
-            this.check_delay_in_days.AutoSize = true;
-            this.check_delay_in_days.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_delay_in_days.ForeColor = System.Drawing.Color.Tomato;
-            this.check_delay_in_days.Location = new System.Drawing.Point(33, 22);
-            this.check_delay_in_days.Name = "check_delay_in_days";
-            this.check_delay_in_days.Size = new System.Drawing.Size(134, 24);
-            this.check_delay_in_days.TabIndex = 127;
-            this.check_delay_in_days.Text = "Delay in days";
-            this.check_delay_in_days.UseVisualStyleBackColor = true;
-            this.check_delay_in_days.CheckedChanged += new System.EventHandler(this.check_delay_in_days_CheckedChanged);
-            // 
-            // pl_profile
-            // 
-            this.pl_profile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
-            this.pl_profile.Controls.Add(this.bt_settings);
-            this.pl_profile.Controls.Add(this.im_profile);
-            this.pl_profile.Controls.Add(this.bt_logout);
-            this.pl_profile.Controls.Add(this.lb_welcome);
-            this.pl_profile.Controls.Add(this.lb_username);
-            this.pl_profile.Location = new System.Drawing.Point(18, 26);
-            this.pl_profile.Name = "pl_profile";
-            this.pl_profile.Size = new System.Drawing.Size(432, 189);
-            this.pl_profile.TabIndex = 0;
-            // 
-            // bt_logout
-            // 
-            this.bt_logout.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bt_logout.BackColor = System.Drawing.Color.Transparent;
-            this.bt_logout.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bt_logout.FlatAppearance.BorderSize = 0;
-            this.bt_logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.bt_logout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.bt_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bt_logout.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_logout.ForeColor = System.Drawing.Color.White;
-            this.bt_logout.IconChar = FontAwesome.Sharp.IconChar.RightToBracket;
-            this.bt_logout.IconColor = System.Drawing.Color.White;
-            this.bt_logout.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.bt_logout.IconSize = 35;
-            this.bt_logout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_logout.Location = new System.Drawing.Point(379, 144);
-            this.bt_logout.Name = "bt_logout";
-            this.bt_logout.Size = new System.Drawing.Size(41, 36);
-            this.bt_logout.TabIndex = 127;
-            this.bt_logout.Tag = "";
-            this.bt_logout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bt_logout.UseVisualStyleBackColor = false;
-            this.bt_logout.Click += new System.EventHandler(this.bt_logout_Click);
-            // 
-            // lb_welcome
-            // 
-            this.lb_welcome.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lb_welcome.AutoSize = true;
-            this.lb_welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_welcome.ForeColor = System.Drawing.Color.White;
-            this.lb_welcome.Location = new System.Drawing.Point(14, 11);
-            this.lb_welcome.Name = "lb_welcome";
-            this.lb_welcome.Size = new System.Drawing.Size(134, 25);
-            this.lb_welcome.TabIndex = 125;
-            this.lb_welcome.Text = "Hi, Welcome";
-            this.lb_welcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lb_username
-            // 
-            this.lb_username.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lb_username.AutoSize = true;
-            this.lb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_username.ForeColor = System.Drawing.Color.White;
-            this.lb_username.Location = new System.Drawing.Point(145, 11);
-            this.lb_username.Name = "lb_username";
-            this.lb_username.Size = new System.Drawing.Size(101, 25);
-            this.lb_username.TabIndex = 123;
-            this.lb_username.Text = "Unknown";
-            this.lb_username.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // bt_settings
-            // 
-            this.bt_settings.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bt_settings.BackColor = System.Drawing.Color.Transparent;
-            this.bt_settings.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.bt_settings.FlatAppearance.BorderSize = 0;
-            this.bt_settings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.bt_settings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.bt_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bt_settings.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_settings.ForeColor = System.Drawing.Color.White;
-            this.bt_settings.IconChar = FontAwesome.Sharp.IconChar.Gear;
-            this.bt_settings.IconColor = System.Drawing.Color.White;
-            this.bt_settings.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.bt_settings.IconSize = 35;
-            this.bt_settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_settings.Location = new System.Drawing.Point(379, 11);
-            this.bt_settings.Name = "bt_settings";
-            this.bt_settings.Size = new System.Drawing.Size(41, 36);
-            this.bt_settings.TabIndex = 128;
-            this.bt_settings.Tag = "";
-            this.bt_settings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.bt_settings.UseVisualStyleBackColor = false;
-            this.bt_settings.Click += new System.EventHandler(this.bt_settings_Click);
-            // 
             // txt_search
             // 
             this.txt_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -382,6 +267,70 @@ namespace Desafio_Concilig
             this.cb_search.Texts = "";
             this.cb_search.OnSelectedIndexChanged += new System.EventHandler(this.cb_search_OnSelectedIndexChanged);
             // 
+            // pl_datagradview
+            // 
+            this.pl_datagradview.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pl_datagradview.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.pl_datagradview.Controls.Add(this.check_delay_in_days);
+            this.pl_datagradview.Controls.Add(this.bt_load);
+            this.pl_datagradview.Controls.Add(this.dataGridView1);
+            this.pl_datagradview.Location = new System.Drawing.Point(18, 221);
+            this.pl_datagradview.Name = "pl_datagradview";
+            this.pl_datagradview.Size = new System.Drawing.Size(1148, 554);
+            this.pl_datagradview.TabIndex = 2;
+            // 
+            // check_delay_in_days
+            // 
+            this.check_delay_in_days.AutoSize = true;
+            this.check_delay_in_days.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.check_delay_in_days.ForeColor = System.Drawing.Color.Tomato;
+            this.check_delay_in_days.Location = new System.Drawing.Point(33, 22);
+            this.check_delay_in_days.Name = "check_delay_in_days";
+            this.check_delay_in_days.Size = new System.Drawing.Size(134, 24);
+            this.check_delay_in_days.TabIndex = 127;
+            this.check_delay_in_days.Text = "Delay in days";
+            this.check_delay_in_days.UseVisualStyleBackColor = true;
+            this.check_delay_in_days.CheckedChanged += new System.EventHandler(this.check_delay_in_days_CheckedChanged);
+            // 
+            // pl_profile
+            // 
+            this.pl_profile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.pl_profile.Controls.Add(this.bt_settings);
+            this.pl_profile.Controls.Add(this.im_profile);
+            this.pl_profile.Controls.Add(this.bt_logout);
+            this.pl_profile.Controls.Add(this.lb_welcome);
+            this.pl_profile.Controls.Add(this.lb_username);
+            this.pl_profile.Location = new System.Drawing.Point(18, 26);
+            this.pl_profile.Name = "pl_profile";
+            this.pl_profile.Size = new System.Drawing.Size(432, 189);
+            this.pl_profile.TabIndex = 0;
+            // 
+            // bt_settings
+            // 
+            this.bt_settings.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.bt_settings.BackColor = System.Drawing.Color.Transparent;
+            this.bt_settings.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt_settings.FlatAppearance.BorderSize = 0;
+            this.bt_settings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.bt_settings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.bt_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bt_settings.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_settings.ForeColor = System.Drawing.Color.White;
+            this.bt_settings.IconChar = FontAwesome.Sharp.IconChar.Gear;
+            this.bt_settings.IconColor = System.Drawing.Color.White;
+            this.bt_settings.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.bt_settings.IconSize = 35;
+            this.bt_settings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_settings.Location = new System.Drawing.Point(379, 11);
+            this.bt_settings.Name = "bt_settings";
+            this.bt_settings.Size = new System.Drawing.Size(41, 36);
+            this.bt_settings.TabIndex = 128;
+            this.bt_settings.Tag = "";
+            this.bt_settings.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_settings.UseVisualStyleBackColor = false;
+            this.bt_settings.Click += new System.EventHandler(this.bt_settings_Click);
+            // 
             // im_profile
             // 
             this.im_profile.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
@@ -398,6 +347,57 @@ namespace Desafio_Concilig
             this.im_profile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.im_profile.TabIndex = 0;
             this.im_profile.TabStop = false;
+            // 
+            // bt_logout
+            // 
+            this.bt_logout.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.bt_logout.BackColor = System.Drawing.Color.Transparent;
+            this.bt_logout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bt_logout.FlatAppearance.BorderSize = 0;
+            this.bt_logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.bt_logout.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.bt_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bt_logout.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_logout.ForeColor = System.Drawing.Color.White;
+            this.bt_logout.IconChar = FontAwesome.Sharp.IconChar.RightToBracket;
+            this.bt_logout.IconColor = System.Drawing.Color.White;
+            this.bt_logout.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.bt_logout.IconSize = 35;
+            this.bt_logout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_logout.Location = new System.Drawing.Point(379, 144);
+            this.bt_logout.Name = "bt_logout";
+            this.bt_logout.Size = new System.Drawing.Size(41, 36);
+            this.bt_logout.TabIndex = 127;
+            this.bt_logout.Tag = "";
+            this.bt_logout.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.bt_logout.UseVisualStyleBackColor = false;
+            this.bt_logout.Click += new System.EventHandler(this.bt_logout_Click);
+            // 
+            // lb_welcome
+            // 
+            this.lb_welcome.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lb_welcome.AutoSize = true;
+            this.lb_welcome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_welcome.ForeColor = System.Drawing.Color.White;
+            this.lb_welcome.Location = new System.Drawing.Point(14, 11);
+            this.lb_welcome.Name = "lb_welcome";
+            this.lb_welcome.Size = new System.Drawing.Size(134, 25);
+            this.lb_welcome.TabIndex = 125;
+            this.lb_welcome.Text = "Hi, Welcome";
+            this.lb_welcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lb_username
+            // 
+            this.lb_username.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lb_username.AutoSize = true;
+            this.lb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_username.ForeColor = System.Drawing.Color.White;
+            this.lb_username.Location = new System.Drawing.Point(178, 92);
+            this.lb_username.Name = "lb_username";
+            this.lb_username.Size = new System.Drawing.Size(101, 25);
+            this.lb_username.TabIndex = 123;
+            this.lb_username.Text = "Unknown";
+            this.lb_username.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Column1
             // 
@@ -432,53 +432,52 @@ namespace Desafio_Concilig
             // Column6
             // 
             this.Column6.DataPropertyName = "CONTRACT_AMOUNT";
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Format = "N2";
+            dataGridViewCellStyle10.NullValue = null;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle10;
             this.Column6.HeaderText = "Valor";
             this.Column6.Name = "Column6";
             // 
-            // Column12
-            // 
-            this.Column12.DataPropertyName = "DELAY_IN_DAYS";
-            this.Column12.HeaderText = "Atraso Em Dias";
-            this.Column12.Name = "Column12";
-            this.Column12.Visible = false;
-            // 
             // Column7
             // 
-            this.Column7.DataPropertyName = "ID_USER";
-            this.Column7.HeaderText = "ID_USER";
+            this.Column7.DataPropertyName = "DELAY_IN_DAYS";
+            this.Column7.HeaderText = "Atraso em Dias";
             this.Column7.Name = "Column7";
-            this.Column7.Visible = false;
             // 
             // Column8
             // 
-            this.Column8.DataPropertyName = "ID_CLIENT";
-            this.Column8.HeaderText = "ID_CLIENT";
+            this.Column8.DataPropertyName = "ID_USER";
+            this.Column8.HeaderText = "id_user";
             this.Column8.Name = "Column8";
             this.Column8.Visible = false;
             // 
             // Column9
             // 
-            this.Column9.DataPropertyName = "ID_CONTRACTS";
-            this.Column9.HeaderText = "ID_CONTRACTS";
+            this.Column9.DataPropertyName = "ID_CLIENT";
+            this.Column9.HeaderText = "id_client";
             this.Column9.Name = "Column9";
             this.Column9.Visible = false;
             // 
             // Column10
             // 
-            this.Column10.DataPropertyName = "ID_PRODUCTS";
-            this.Column10.HeaderText = "ID_PRODUCTS";
+            this.Column10.DataPropertyName = "ID_CONTRACTS";
+            this.Column10.HeaderText = "id_contracts";
             this.Column10.Name = "Column10";
             this.Column10.Visible = false;
             // 
             // Column11
             // 
-            this.Column11.DataPropertyName = "ID_IMPORT";
-            this.Column11.HeaderText = "ID_IMPORT";
+            this.Column11.DataPropertyName = "ID_PRODUCTS";
+            this.Column11.HeaderText = "id_products";
             this.Column11.Name = "Column11";
             this.Column11.Visible = false;
+            // 
+            // Column12
+            // 
+            this.Column12.DataPropertyName = "ID_IMPORT";
+            this.Column12.HeaderText = "id_import";
+            this.Column12.Name = "Column12";
+            this.Column12.Visible = false;
             // 
             // dashboard
             // 
@@ -529,11 +528,11 @@ namespace Desafio_Concilig
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column12;
     }
 }
