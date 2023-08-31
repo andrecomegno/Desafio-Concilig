@@ -14,7 +14,7 @@ namespace Desafio_Concilig.Script
             Map(v => v.NAME_PRODUCTS).Name("Produto");
             // CONVERSAO DA DATA PARA PADRAO BRASIL
             Map(m => m.EXPIRATION_DATE).Name("Vencimento").TypeConverter<ConvertDateCSV>();
-            Map(v => v.CONTRACT_AMOUNT).Name("Valor");           
+            Map(v => v.CONTRACT_AMOUNT).Name("Valor");
         }
     }
 }

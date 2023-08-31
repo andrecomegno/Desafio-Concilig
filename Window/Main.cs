@@ -1,11 +1,17 @@
-﻿using System;
+﻿using FontAwesome.Sharp;
+using System;
+using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Desafio_Concilig
 {
     public partial class main : Form
-    {     
+    {
+
+        // MENU RECOLHER
+        bool _menuCollapse;
 
         public main()
         {
@@ -18,7 +24,7 @@ namespace Desafio_Concilig
             }
             finally
             {
-                load_tables uc = new load_tables();
+                dashboard uc = new dashboard();
                 addControl(uc);
             }            
         }
@@ -32,6 +38,7 @@ namespace Desafio_Concilig
             userControl.BringToFront();
         }
 
+        #region BUTTON TOP
         // BOTÕES MENU TOPO JANELA
         private void bt_minimize_Click(object sender, EventArgs e)
         {
@@ -65,31 +72,56 @@ namespace Desafio_Concilig
                     break;
             }
         }
+        #endregion
 
-        // CREDITOS
-        private void txt_creator_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("https://github.com/andrecomegno");
+        #region MENU LATERAL
+        // MENU LATERAL 
+        private void MenuCollapse(bool _collapse)
+        {
+            // RECOLHE O MENU E ADAPTA OS BOTÕES
+            if (_collapse)
+            {
+                pl_left.Width = 60;
+                bt_menu_collapse.IconChar = IconChar.AngleRight;
+
+                foreach (Button menuButton in pl_left.Controls.OfType<Button>())
+                {
+                    menuButton.Text = "";
+                    menuButton.ImageAlign = ContentAlignment.MiddleLeft;
+                    menuButton.Padding = new Padding(10, 0, 0, 0);
+                }
+            }
+            else
+            {
+                pl_left.Width = 200;
+                bt_menu_collapse.IconChar = IconChar.AngleLeft;
+
+                foreach (Button menuButton in pl_left.Controls.OfType<Button>())
+                {
+                    menuButton.Text = "" + menuButton.Tag.ToString();
+                    menuButton.ImageAlign = ContentAlignment.MiddleLeft;
+                    menuButton.Padding = new Padding(10, 0, 0, 0);
+                }
+            }
+        }
+
+        private void bt_menu_collapse_Click(object sender, EventArgs e) => Menu_Collapse();
+        private void Menu_Collapse() => MenuCollapse(_menuCollapse = !_menuCollapse);
+        #endregion
 
         //ARRASTAR FORMULARIO
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(IntPtr hWnd, int wMsg, int wParam, int lParam);
-
         private void pl_top_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        private void main_Load(object sender, EventArgs e)
-        {
-            // MOSTRA O USERNAME DO LOGIN
-            lb_user.Text = Login.Instance.username;
-
-            // MOSTRA A DATA ATUAL
-            lb_date.Text = DateTime.Now.ToString("dd/MM/yyyy");
-        }
-
+        // CREDITOS
+        private void txt_creator_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("https://github.com/andrecomegno");
 
     }
 }
