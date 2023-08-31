@@ -153,7 +153,7 @@ namespace Desafio_Concilig
             this.txt_username.Multiline = false;
             this.txt_username.Name = "txt_username";
             this.txt_username.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.txt_username.PasswordChar = true;
+            this.txt_username.PasswordChar = false;
             this.txt_username.PlaceholderColor = System.Drawing.Color.DarkGray;
             this.txt_username.PlaceholderText = "Name";
             this.txt_username.Size = new System.Drawing.Size(250, 31);
